@@ -1,44 +1,15 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Login</title>
+    <title>Home - Simple Auth Site</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            var email = profile.getEmail();
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:5000/login');
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                email: email
-            }));
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    console.log('Signed in as: ' + xhr.responseText);
-                    alert('Login avvenuto con successo!');
-                } else {
-                    console.error('Error signing in: ' + xhr.responseText);
-                    alert('Errore durante il login. Per favore riprova.');
-                }
-            };
-            xhr.onerror = function() {
-                console.error('Network error.');
-                alert('Errore di rete. Per favore controlla la tua connessione.');
-            };
-        }
-    </script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Prova codice Social Login</h1>
-        </header>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </div>
+    <h1>Welcome to Simple Auth Site</h1>
+    <button onclick="window.location.href='register.html'">Registrati</button>
+    <button onclick="window.location.href='login.html'">Effettua il Login</button>
+    <button onclick="window.location.href='users.html'">Visualizza Utenti</button>
 </body>
 </html>
