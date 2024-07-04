@@ -18,15 +18,27 @@
                 email: email
             }));
             xhr.onload = function() {
-                console.log('Signed in as: ' + xhr.responseText);
+                if (xhr.status === 200) {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    alert('Login avvenuto con successo!');
+                } else {
+                    console.error('Error signing in: ' + xhr.responseText);
+                    alert('Errore durante il login. Per favore riprova.');
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Network error.');
+                alert('Errore di rete. Per favore controlla la tua connessione.');
             };
         }
     </script>
 </head>
 <body>
-    <header>
-        <h1>Prova codice Social Login</h1>
-    </header>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="container">
+        <header>
+            <h1>Prova codice Social Login</h1>
+        </header>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
 </body>
 </html>
